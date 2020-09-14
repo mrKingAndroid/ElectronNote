@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# ElectronNote
+Electron + react(hooks) + typescript Implement a Markdown note, save it locally and upload it to the cloud
+>>>>>>> 7e3f7e8fd7c17ea2bbac2f6887fb5d4ace30fc23
