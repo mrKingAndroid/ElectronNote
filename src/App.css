@@ -46,3 +46,8 @@
     bottom: 12px;
     left: 10px;
 }
+
+.App {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
