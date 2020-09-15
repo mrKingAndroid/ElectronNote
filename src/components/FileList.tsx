@@ -10,10 +10,10 @@ const FileList = ({
   onSaveEdit,
   onFileDelete,
 }: {
-  files: Array<FileType>;
-  onFileClick: Function;
-  onSaveEdit: Function;
-  onFileDelete: Function;
+  files?: Array<FileType>;
+  onFileClick?: Function;
+  onSaveEdit?: Function;
+  onFileDelete?: Function;
 }) => {
   const [editStatus, setEditStatus] = useState(-1); // 正在编辑的是哪个文件
   const [value, setValue] = useState(""); // 输入框值

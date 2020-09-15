@@ -6,10 +6,10 @@ const BottomBtn = ({
   icon,
   onBtnClick,
 }: {
-  text: string;
+  text?: string;
   colorClass?: string;
   icon: any;
-  onBtnClick: Function;
+  onBtnClick?: Function;
 }) => {
   return (
     <button
