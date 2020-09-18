@@ -14,7 +14,7 @@ const TabList = ({
 }: {
   files?: Array<FileType>;
   activeId?: string;
-  unsaveIds?: Array<number>;
+  unsaveIds?: Array<string>;
   onTabClick?: Function;
   onCloseTab?: Function;
 }) => {
@@ -24,7 +24,7 @@ const TabList = ({
         const withUnsavedMark = unsaveIds.includes(file.id);
         const fClassName = classNames({
           "nav-link": true,
-          active: file.id === Number(activeId),
+          active: file.id === activeId,
           withUnsaved: withUnsavedMark,
         });
         return (

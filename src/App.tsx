@@ -6,19 +6,22 @@ import FileList from "./components/FileList";
 import TabList from "./components/TabList";
 import { faPlus, faFileImport } from "@fortawesome/free-solid-svg-icons";
 import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
 import BottomBtn from "./components/BottomBtn";
+import { defaultFiles } from "./utils/defaultFiles";
 import { FileType } from "./utils/types";
 const Store = window.require("electron-store");
 const fileStore = new Store({ name: "Files Data" });
 
 function App() {
-  const [files, setFiles] = useState(
-    fileStore.get("files") || ({} as FileType)
-  );
-  const [activeFileID, setActiveFileID] = useState("");
-  const [openedFileIDs, setOpenedFileIDs] = useState([]);
-  const [unsavedFileIDs, setUnsavedFileIDs] = useState([]);
-  const activeFile = files[activeFileID];
+  // const [files, setFiles] = useState(
+  //   fileStore.get("files") || ({} as FileType)
+  // );
+  const [files, setFiles] = useState(() => defaultFiles);
+  const [activeFileID, setActiveFileID] = useState("1");
+  const [openedFileIDs, setOpenedFileIDs] = useState(["1", "2", "3"]);
+  const [unsavedFileIDs, setUnsavedFileIDs] = useState(["1"]);
+  const activeFile: FileType = files.find((file) => file.id === activeFileID);
   const importFiles = () => {};
   const createNewFile = () => {};
   const fileClick = () => {};
@@ -28,7 +31,7 @@ function App() {
     console.log("updateFileName - - App :", id, value);
   };
   const openedFiles = openedFileIDs.map((openID) => {
-    return files[openID];
+    return files.find((file) => file.id === openID);
   });
 
   const tabClick = (fileID: string) => {
@@ -36,14 +39,16 @@ function App() {
     setActiveFileID(fileID);
   };
   const tabClose = (id: number) => {};
-  const fileChange = (id: number, value: string) => {};
+  const fileChange = (id: string, value: string) => {
+    console.log(" - - fileChange - - : ", id, value);
+  };
   return (
     <div className="App container-fluid px-0">
       <div className="row no-gutters">
         <div className="col-3 bg-light left-panel">
           <FileSearch onFileSearch={() => {}} />
           <FileList
-            files={[]}
+            files={files}
             onFileClick={fileClick}
             onSaveEdit={updateFileName}
             onFileDelete={deleteFile}

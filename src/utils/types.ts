@@ -1,5 +1,6 @@
 export interface FileType {
-  id: number;
+  id: string;
   title: string;
   body?: string;
+  createdAt?: number;
 }

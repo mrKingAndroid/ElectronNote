@@ -15,13 +15,13 @@ const FileList = ({
   onSaveEdit?: Function;
   onFileDelete?: Function;
 }) => {
-  const [editStatus, setEditStatus] = useState(-1); // 正在编辑的是哪个文件
+  const [editStatus, setEditStatus] = useState(""); // 正在编辑的是哪个文件
   const [value, setValue] = useState(""); // 输入框值
   let node = useRef(null);
   const enterPressed = useKeyPress(13);
   const escPressed = useKeyPress(27);
   const closeSearch = (editItem: FileType) => {
-    setEditStatus(-1);
+    setEditStatus("");
     setValue("");
   };
 
@@ -29,7 +29,7 @@ const FileList = ({
     const editItem = files.find((file) => file.id === editStatus);
     if (enterPressed && editStatus && value.trim() != "") {
       onSaveEdit(editItem.id, value);
-      setEditStatus(-1);
+      setEditStatus("");
       setValue("");
     }
     if (escPressed && editStatus) {
@@ -62,7 +62,7 @@ const FileList = ({
                 </span>
               </>
             )}
-            {file.id !== editStatus && (
+            {file.id === editStatus && (
               <>
                 <input
                   className="form-control col-10"
